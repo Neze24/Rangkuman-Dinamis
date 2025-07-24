@@ -1,7 +1,7 @@
 <?php
-$Derellconn = mysqli_connect("localhost", "root", "", "article");
+$conn = mysqli_connect("localhost", "root", "", "article");
 
-if(!$Derellconn){
+if(!$conn){
     echo "gagal";
 }
 ?>
