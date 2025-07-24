@@ -1,6 +1,27 @@
+<?php
+include("../connection.php");
+
+$no = $_GET["No"] ?? 0;
+$id = $_GET["Id"] ?? null;
+
+if (!$id) {
+  die("Id not found");
+}
+
+// Query data
+$Pranala = mysqli_query($conn, "SELECT Pranala_Youtube FROM materi WHERE Id_Materi = '$id'");
+$Rangkuman = mysqli_query($conn, "SELECT Rangkuman FROM materi WHERE Id_Materi = '$id'");
+$Point = mysqli_query($conn, "SELECT Point_Rangkuman FROM materi WHERE Id_Materi = '$id'");
+
+// Fetch data
+$pranalaData = mysqli_fetch_assoc($Pranala);
+$rangkumanData = mysqli_fetch_assoc($Rangkuman);
+$pointData = mysqli_fetch_assoc($Point);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>HTML Article Summary</title>
@@ -31,21 +52,18 @@
     <div class="container">
       <div class="main-content">
         <div class="card video-card">
-          <iframe src="https://www.youtube.com/embed/NBZ9Ro6UKV8" title="YouTube video" frameborder="0"
+          <iframe src="<?= $pranalaData['Pranala_Youtube'] ?>" title="YouTube video" frameborder="0"
             allowfullscreen></iframe>
         </div>
         <div class="small-cards">
           <div class="card white-card box-1">
             <h2>HTML</h2>
-            <p>HTML (HyperText Markup Language) adalah bahasa markup standar untuk membuat halaman web. HTML digunakan
-              untuk menyusun struktur konten di web, seperti teks, gambar, dan multimedia.</p>
+            <p><?= $rangkumanData['Rangkuman'] ?></p>
           </div>
           <div class="card dark-card box-2  ">
             <ul>
-              <li>HTML (HyperText Markup Language) adalah bahasa markup standar untuk membuat halaman web.</li>
-              <li>HTML digunakan untuk menyusun struktur konten di web, seperti teks, gambar, dan multimedia.</li>
-              <li>HTML terdiri dari elemen-elemen yang ditandai dengan tag, seperti &lt;html&gt;, &lt;head&gt;, &lt;body&gt;, dll.</li>
-              <li>HTML5 adalah versi terbaru yang mendukung multimedia dan elemen semantik.</li>
+              <?= $pointData['Point_Rangkuman'] ?>
+            </ul>
           </div>
         </div>
       </div>
@@ -53,17 +71,17 @@
       <div class="sidebar">
         <h2>Article’s</h2>
         <ol type="I">
-          <li><a href="page.html">Pengenalan HTML</a></li>
-          <li><a href="page2.html">Struktur Dokumen HTML</a></li>
-          <li><a href="page3.html">Teks & Formating</a></li>
-          <li><a href="page4.html">List</a></li>
-          <li><a href="page5.html">Link (Hyperlink)</a></li>
-          <li><a href="page6.html">Gambar</a></li>
-          <li><a href="page7.html">Tabel</a></li>
-          <li><a href="page8.html">Formulir</a></li>
-          <li><a href="page9.html">Elemen Semantik HTML5</a></li>
-          <li><a href="page10.html">Multimedia</a></li>
-          <li><a href="page11.html">Komentar</a></li>
+          <li><a href="page.php?Id=1">Pengenalan HTML</a></li>
+          <li><a href="page.php?Id=2">Struktur Dokumen HTML</a></li>
+          <li><a href="page.php?Id=3">Teks & Formating</a></li>
+          <li><a href="page.php?Id=4">List</a></li>
+          <li><a href="page.php?Id=5">Link (Hyperlink)</a></li>
+          <li><a href="page.php?Id=6">Gambar</a></li>
+          <li><a href="page.php?Id=7">Tabel</a></li>
+          <li><a href="page.php?Id=8">Formulir</a></li>
+          <li><a href="page.php?Id=9">Elemen Semantik HTML5</a></li>
+          <li><a href="page.php?Id=10">Multimedia</a></li>
+          <li><a href="page.php?Id=11">Komentar</a></li>
         </ol>
       </div>
     </div>
