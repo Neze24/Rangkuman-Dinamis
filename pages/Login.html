@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .login-box {
+            background-color: #1e1f26;
+            padding: 30px;
+            border-radius: 20px;
+            width: fit-content;
+            min-width: 346px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            min-height: 348px;
+        }
+
+        .login-box label {
+            display: block;
+            color: white;
+            text-align: left;
+            margin-bottom: 8px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ccc;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 12px;
+            color: gray;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 50px;
+            margin-top: 10px;
+        }
+
+        .form-group input {
+            margin-bottom: 20px;
+        }
+
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #222831;
+            /* Warna background loading */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            /* Di atas semua elemen */
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ccc;
+            border-top: 5px solid #00ADB5;
+            /* Warna utama */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Hilangkan preloader setelah halaman tampil */
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+    <div class="back-arrow" onclick="history.back()">&#8592;</div>
+    <div class="container">
+        <h1>Welcome Back 😊</h1>
+        <div class="login-box">
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" />
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" />
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer">Copyright © 2025 Telkom DFE. All Rights Reserved.</div>
+
+    <script>
+        window.addEventListener("load", function () {
+            document.getElementById("preloader").classList.add("hidden");
+        });
+    </script>
+</body>
+
+</html>
