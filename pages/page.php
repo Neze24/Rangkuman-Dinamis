@@ -1,6 +1,11 @@
+<?php
+include("../connection.php");
+
+$id = $_GET["Id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>HTML Article Summary</title>
