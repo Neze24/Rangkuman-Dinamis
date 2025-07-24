@@ -44,8 +44,7 @@ $pointData = mysqli_fetch_assoc($Point);
       </div>
       <nav>
         <a href="../index.html">HOME</a>
-        <a href="page.html">ARTICLE</a>
-        <a href="">SEARCH</a>
+        <a href="#page.php">ARTICLE</a>
       </nav>
     </div>
   </header>
