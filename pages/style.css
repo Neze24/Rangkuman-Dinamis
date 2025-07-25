@@ -286,7 +286,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #ffffff; /* Warna background loading */
+    background: #222831; /* Warna background loading */
     display: flex;
     align-items: center;
     justify-content: center;
