@@ -319,7 +319,7 @@ footer .links a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #222831; /* Warna background loading */
+    background: #EEEEEE; /* Warna background loading */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -346,4 +346,33 @@ footer .links a {
     opacity: 0;
     visibility: hidden;
 }
+
+.summary-text-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.summary-text {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animasi keluar masuk */
+.slide-out-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-in-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
 
