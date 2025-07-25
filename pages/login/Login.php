@@ -1,13 +1,7 @@
 <?php
 session_start();
 
-// Koneksi ke database
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "article";
-
-$conn = new mysqli($host, $user, $pass, $db);
+include_once '../../connection.php';
 
 // Cek koneksi
 if ($conn->connect_error) {
@@ -29,7 +23,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Login sukses
     $_SESSION['username'] = $username;
-    header("Location: dashboard.php");
+    header("Location: ../dashboard.php");
     exit;
 } else {
     // Gagal login

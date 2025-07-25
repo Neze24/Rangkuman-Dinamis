@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: index.html");
+    header("Location: ../../index.html");
     exit;
 }
 ?>
@@ -14,6 +14,6 @@ if (!isset($_SESSION['username'])) {
 <body>
     <h1>Selamat datang, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
     <p>Anda berhasil login.</p>
-    <a href="logout.php">Logout</a>
+    <a href="../index.html">Kembali</a>
 </body>
 </html>
