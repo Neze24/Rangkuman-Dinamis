@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2025 at 08:57 AM
+-- Generation Time: Jul 25, 2025 at 04:12 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `article`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `id_login` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id_login`, `username`, `password`) VALUES
+(1, 'Salim Syauqi Rachman', 'salim12345');
 
 -- --------------------------------------------------------
 
@@ -57,6 +76,12 @@ INSERT INTO `materi` (`Id_Materi`, `Nama_Materi`, `Rangkuman`, `Point_Rangkuman`
 --
 
 --
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id_login`);
+
+--
 -- Indexes for table `materi`
 --
 ALTER TABLE `materi`
@@ -65,6 +90,12 @@ ALTER TABLE `materi`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `materi`
