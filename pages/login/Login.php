@@ -23,7 +23,12 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Login sukses
     $_SESSION['username'] = $username;
-    header("Location: ../dashboard.php");
+    $result = mysqli_query($conn, "SELECT id_login FROM login WHERE username = '$username'");
+    $data = mysqli_fetch_assoc($result);
+    $id_login = $data['id_login'];
+    $_SESSION['id'] = $id_login;
+
+    header("Location: ../journal/jurnaldata.php");
     exit;
 } else {
     // Gagal login
