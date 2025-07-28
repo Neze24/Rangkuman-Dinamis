@@ -1,14 +1,41 @@
+<?php
+session_start();
+include("../../connection.php");
+$id_login = $_SESSION['id'];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $kegiatan = $_POST["kegiatan"];
+    $hari = $_POST["hari"];
+    $tanggal = $_POST["tanggal"];
+    $perencanaan = $_POST["perencanaan"];
+    $foto = "";
+
+    $sql = "INSERT INTO jurnal (id_login, Nama_Pekerjaan, Perencanaan_Pekerjaan, Dokumentasi, Tanggal, Hari) 
+                VALUES ('$id_login', '$kegiatan', '$perencanaan', '$foto', '$tanggal', '$hari')";
+    $conn->query($sql);
+
+        header("Location: jurnaldata.php");
+        exit();
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>Form Input</title>
     <style>
         * {
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Kanit', sans-serif;
         }
 
         body {
@@ -52,13 +79,17 @@
         input[type="text"],
         input[type="date"],
         input[type="time"],
+        input[type="file"],
+        select,
         textarea {
             width: 100%;
             padding: 10px;
             border-radius: 6px;
             border: none;
             background-color: #e0e0e0;
+            font-family: 'Kanit', sans-serif;
         }
+
 
         textarea {
             resize: vertical;
@@ -91,7 +122,7 @@
             align-items: center;
             padding: 1rem 2rem;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1080px;
             margin: 0 auto;
             gap: 2rem;
             min-width: 600px;
@@ -161,6 +192,16 @@
             margin: 1rem 0;
             color: #444;
         }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            background-color: #e0e0e0;
+            font-family: 'Kanit', sans-serif;
+        }
+
     </style>
 </head>
 
@@ -169,13 +210,13 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="../asset/8665571_laptop_code_icon 1.svg" alt="Logo" height="35px" />
+                <img src="../../asset/8665571_laptop_code_icon 1.svg" alt="Logo" height="35px" />
                 <p>DIGITAL PRODUCT <br /> ENGINEERING</p>
             </div>
             <nav>
-                <a href="../index.html">HOME</a>
-                <a href="page.php?Id=1&No=1">ARTICLE</a>
-                <a href="Login.html">LOGIN</a>
+                <a href="../../index.html">HOME</a>
+                <a href="../page.php?Id=1&No=1">ARTICLE</a>
+                <a href="../../index.html">LOGOUT</a>
             </nav>
         </div>
     </header>
@@ -189,18 +230,23 @@
             <label for="tanggal">Tanggal</label>
             <input type="date" id="tanggal" name="tanggal" required>
 
-            <label for="waktu">Waktu</label>
-            <input type="time" id="waktu" name="waktu" required>
+            <label for="hari">Hari</label>
+            <select id="hari" name="hari" required>
+                <option value="Senin">Senin</option>
+                <option value="Selasa">Selasa</option>
+                <option value="Rabu">Rabu</option>
+                <option value="Kamis">Kamis</option>
+                <option value="Jumat">Jumat</option>
+            </select>
 
-            <label for="kegiatan1">Kegiatan</label>
-            <textarea id="kegiatan1" name="kegiatan1"></textarea>
+            <label for="kegiatan">Nama Kegiatan</label>
+            <textarea id="kegiatan" name="kegiatan"></textarea>
 
-            <label for="kegiatan2">Kegiatan</label>
-            <textarea id="kegiatan2" name="kegiatan2"></textarea>
+            <label for="perencanaan">Perencanaan Kegiatan</label>
+            <textarea id="perencanaan" name="perencanaan"></textarea>
 
-            <label for="foto" class="custom-file-upload">Upload Foto</label>
-            <input type="file" id="foto" name="foto" accept="image/*" /><br>
-
+            <label for="foto">Upload Foto</label>
+            <input type="file" id="foto" name="foto"><br>
 
             <button type="submit" class="btn">Submit</button>
         </form>

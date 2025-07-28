@@ -1,8 +1,13 @@
 * {
   box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
+  font-family: 'Kanit', sans-serif;
+  margin: 0;
+  background-color: #EEEEEE;
+  color: #222;
   font-family: 'Kanit', sans-serif;
   margin: 0;
   background-color: #EEEEEE;
@@ -11,6 +16,9 @@ body {
 
 /* Wrapper utama */
 main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
@@ -29,7 +37,17 @@ header {
   min-width: 600px;
 }
 
+
 .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  flex-wrap: wrap;
+  font-family: Jura, sans-serif;
+  max-width: 640px;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,9 +63,17 @@ nav {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 nav a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+  transition: color 0.3s ease;
   color: #000;
   text-decoration: none;
   font-size: 14px;
@@ -57,9 +83,12 @@ nav a {
 
 nav a:hover {
   color: #00ADB5;
+  color: #00ADB5;
 }
 
 nav a.active {
+  color: #00ADB5;
+  font-weight: bold;
   color: #00ADB5;
   font-weight: bold;
 }
@@ -82,9 +111,14 @@ nav a.active {
 .summary-logo {
   width: 500px;
   height: auto;
+  width: 500px;
+  height: auto;
 }
 
 .summary-text h1 {
+  margin: 0;
+  font-size: 60px;
+  font-weight: bold;
   margin: 0;
   font-size: 60px;
   font-weight: bold;
@@ -92,9 +126,13 @@ nav a.active {
 
 .summary-text h1 span {
   color: #00ADB5;
+  color: #00ADB5;
 }
 
 .summary-text p {
+  margin: 5px 0 20px 0;
+  font-size: 18px;
+  color: #ccc;
   margin: 5px 0 20px 0;
   font-size: 18px;
   color: #ccc;
@@ -108,9 +146,19 @@ nav a.active {
   transition: 0.3s ease;
   margin-right: 10px;
   display: inline-block;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+  margin-right: 10px;
+  display: inline-block;
 }
 
 .article-btn {
+  background-color: transparent;
+  border: 2px solid #00ADB5;
+  color: #00ADB5;
   background-color: transparent;
   border: 2px solid #00ADB5;
   color: #00ADB5;
@@ -119,10 +167,23 @@ nav a.active {
 .article-btn:hover {
   background-color: #00ADB5;
   color: #fff;
+  background-color: #00ADB5;
+  color: #fff;
 }
 
 /* Footer */
 footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #393E46;
+  color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 2rem auto;
+  max-width: 1000px;
+  gap: 2rem;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -146,8 +207,20 @@ footer::before {
   width: 1px;
   background-color: white;
   transform: translateX(-50%);
+  content: "";
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  left: 50%;
+  width: 1px;
+  background-color: white;
+  transform: translateX(-50%);
 }
 
+footer .info,
+footer .links {
+  flex: 1;
+  max-width: 45%;
 footer .info,
 footer .links {
   flex: 1;
@@ -159,9 +232,17 @@ footer .links a {
   color: white;
   text-decoration: none;
   margin-bottom: 0.5rem;
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
 }
 
 .copyright {
+  text-align: center;
+  font-size: 12px;
+  margin: 1rem 0;
+  color: #444;
   text-align: center;
   font-size: 12px;
   margin: 1rem 0;
@@ -174,8 +255,15 @@ footer .links a {
   align-items: center;
   gap: 1rem;
   font-size: small;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: small;
 }
 
+.link-source {
+  color: #ffffff;
+  text-decoration: none;
 .link-source {
   color: #ffffff;
   text-decoration: none;
@@ -183,9 +271,11 @@ footer .links a {
 
 .link-source:hover {
   color: #00ADB5;
+  color: #00ADB5;
 }
 
 .link-source:active {
+  color: #00ADB5;
   color: #00ADB5;
 }
 
@@ -205,10 +295,12 @@ footer .links a {
     padding: 40px 24px;
     gap: 32px;
     flex-wrap: wrap;
+    flex-wrap: wrap;
     text-align: center;
   }
 
   .summary-logo {
+    width: 360px;
     width: 360px;
     max-width: 100%;
   }
@@ -228,6 +320,7 @@ footer .links a {
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
+    min-width: auto;
     min-width: auto;
   }
 
@@ -269,6 +362,7 @@ footer .links a {
 
   footer::before {
     display: none;
+    display: none;
   }
 
   footer .info,
@@ -300,6 +394,7 @@ footer .links a {
 
   .summary-buttons a {
     display: block;
+    display: block;
     margin: 6px auto;
     width: fit-content;
   }
@@ -329,9 +424,29 @@ footer .links a {
   z-index: 9999;
   /* Di atas semua elemen */
   transition: opacity 0.5s ease, visibility 0.5s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #EEEEEE;
+  /* Warna background loading */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  /* Di atas semua elemen */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #00ADB5;
+  /* Warna utama */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
   width: 50px;
   height: 50px;
   border: 5px solid #ccc;
@@ -349,10 +464,19 @@ footer .links a {
   100% {
     transform: rotate(360deg);
   }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Hilangkan preloader setelah halaman tampil */
 #preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
   opacity: 0;
   visibility: hidden;
 }
