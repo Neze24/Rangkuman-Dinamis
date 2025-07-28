@@ -4,32 +4,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Article Summary</title>
-    <link rel="stylesheet" href="index.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .slider {
+            position: relative;
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+            background: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .slide {
+            display: none;
+            transition: all 0.5s ease;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        button.prev,
+        button.next {
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 30px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        button.prev {
+            left: 10px;
+        }
+
+        button.next {
+            right: 10px;
+        }
+
+
+        /* Summary Section */
+        .summary-container {
+            background-color: #222831;
+            border: 2px solid #00ADB5;
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            max-width: 1070px;
+            color: #fff;
+        }
+
+        .summary-logo {
+            width: 500px;
+            height: auto;
+        }
+
+        .summary-text h1 {
+            margin: 0;
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        .summary-text h1 span {
+            color: #00ADB5;
+        }
+
+        .summary-text p {
+            margin: 5px 0 20px 0;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .summary-buttons a {
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s ease;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .article-btn {
+            background-color: transparent;
+            border: 2px solid #00ADB5;
+            color: #00ADB5;
+        }
+
+        .article-btn:hover {
+            background-color: #00ADB5;
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="preloader">
-        <div class="spinner"></div>
-    </div>
-
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="asset/8665571_laptop_code_icon 1.svg" alt="Logo" height="35px" />
-                <p>DIGITAL PRODUCT <br /> ENGINEERING</p>
-            </div>
-            <nav>
-                <a href="#">HOME</a>
-                <a href="pages/page.php?Id=1&No=1">ARTICLE</a>
-                <a href="pages/Login.html">LOGIN</a><!-- nbigger --->
-            </nav>
-        </div>
-    </header>
-
     <div class="slider">
         <div class="slide active">
             <section class="summary-container">
@@ -41,7 +117,7 @@
                             channel Web
                             Programming UNPAS</a></p>
                     <div class="summary-buttons">
-                        <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's 1</a>
+                        <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's</a>
                         <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
                     </div>
                 </div>
@@ -59,7 +135,7 @@
                             channel Web
                             Programming UNPAS</a></p>
                     <div class="summary-buttons">
-                        <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's 2</a>
+                        <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's</a>
                         <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
                     </div>
                 </div>
@@ -68,33 +144,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="info">
-            <img src="asset/image 1.svg" alt="Telkom Logo" height="60px" />
-            <p>
-                Gd. IndigoHub<br />
-                Telkom Corporate University<br />
-                Jl. Gegerkalong Hilir No 47<br />
-                Bandung 40152
-            </p>
-        </div>
-        <div class="links">
-            <h1 style="color: #00ADB5;"><strong>Quick Access</strong></h1>
-            <a href="#">Internship Members</a>
-            <a href="#">Mentors</a>
-            <a href="#">Manager</a>
-        </div>
-    </footer>
-
-    <div class="copyright">
-        Copyright © 2025 Telkom DPE. All Rights Reserved.
-    </div>
-
     <script>
-        window.addEventListener("load", function () {
-            document.getElementById("preloader").classList.add("hidden");
-        });
-
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
 
@@ -119,7 +169,6 @@
         setInterval(nextSlide, 5000);
 
     </script>
-
 </body>
 
 </html>
