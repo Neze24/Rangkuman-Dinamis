@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2025 at 04:12 AM
+-- Generation Time: Jul 29, 2025 at 03:41 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jurnal`
+--
+
+CREATE TABLE `jurnal` (
+  `Id_Jurnal` int(11) NOT NULL,
+  `id_login` int(11) NOT NULL,
+  `Nama_Pekerjaan` varchar(255) NOT NULL,
+  `Perencanaan_Pekerjaan` varchar(10000) NOT NULL,
+  `Dokumentasi` varchar(255) NOT NULL,
+  `Tanggal` date NOT NULL,
+  `Hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jurnal`
+--
+
+INSERT INTO `jurnal` (`Id_Jurnal`, `id_login`, `Nama_Pekerjaan`, `Perencanaan_Pekerjaan`, `Dokumentasi`, `Tanggal`, `Hari`) VALUES
+(1, 2, 'Belajar Git & GitHub', '', '', '2025-07-14', 'Senin'),
+(2, 2, 'Belajar membuat dan meniru Design yang sudah di buat', '', '', '2025-07-16', 'Kamis'),
+(3, 2, 'Belajar Kolaborasi menggunakan Git & GitHub', '', '', '2025-07-21', 'Senin'),
+(4, 2, 'Belajar membuat website', '', '', '2025-07-22', 'Rabu'),
+(5, 1, 'Belajar GIt dan Github', '', '', '2025-07-14', 'Senin'),
+(6, 1, 'Belajar bikin design', '', '', '2025-07-17', 'Kamis'),
+(7, 2, 'Belajar JavaScript', '', '', '2025-07-28', 'Senin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -38,7 +67,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id_login`, `username`, `password`) VALUES
-(1, 'Salim Syauqi Rachman', 'salim12345');
+(1, 'Salim Syauqi Rachman', 'salim12345'),
+(2, 'admin', 'admin123');
 
 -- --------------------------------------------------------
 
@@ -76,6 +106,13 @@ INSERT INTO `materi` (`Id_Materi`, `Nama_Materi`, `Rangkuman`, `Point_Rangkuman`
 --
 
 --
+-- Indexes for table `jurnal`
+--
+ALTER TABLE `jurnal`
+  ADD PRIMARY KEY (`Id_Jurnal`),
+  ADD KEY `id_login` (`id_login`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -92,16 +129,32 @@ ALTER TABLE `materi`
 --
 
 --
+-- AUTO_INCREMENT for table `jurnal`
+--
+ALTER TABLE `jurnal`
+  MODIFY `Id_Jurnal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
   MODIFY `Id_Materi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `jurnal`
+--
+ALTER TABLE `jurnal`
+  ADD CONSTRAINT `jurnal_ibfk_1` FOREIGN KEY (`id_login`) REFERENCES `login` (`id_login`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
