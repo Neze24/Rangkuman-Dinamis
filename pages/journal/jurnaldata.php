@@ -197,7 +197,7 @@ $article = mysqli_query($conn, "SELECT * FROM jurnal WHERE id_login = '$id_login
 
         } ?>
 
-        <div style="margin: 20px 13.5% 0;">
+        <div style="margin: 20px 17.5% 0;">
             <button onclick="location.href='jurnalinput.php'" style="
                 background-color: #00c3d6;
                 color: white;
