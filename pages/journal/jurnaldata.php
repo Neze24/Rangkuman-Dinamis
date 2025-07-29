@@ -172,8 +172,6 @@ $article = mysqli_query($conn, "SELECT * FROM jurnal WHERE id_login = '$id_login
                 <thead>
                     <tr>
                         <th>Nama Kegiatan</th>
-                        <th>Perencanaan Kegiatan</th>
-                        <th>Dokumentasi</th>
                         <th>Tanggal</th>
                         <th>Hari</th>
                         <th>Action</th>
@@ -184,11 +182,9 @@ $article = mysqli_query($conn, "SELECT * FROM jurnal WHERE id_login = '$id_login
                     <?php while ($jurnal = $article->fetch_assoc()): ?>
                         <tr>
                             <td><?php echo $jurnal["Nama_Pekerjaan"]; ?></td>
-                            <td><?php echo $jurnal["Perencanaan_Pekerjaan"]; ?></td>
-                            <td><?php echo $jurnal["Dokumentasi"]; ?></td>
                             <td><?php echo $jurnal["Tanggal"]; ?></td>
                             <td><?php echo $jurnal["Hari"]; ?></td>
-                            <td><a href="#">View</a></td>
+                            <td><a href="jurnalactivity.php">View</a></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
