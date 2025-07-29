@@ -31,39 +31,45 @@
     </header>
 
     <div class="slider">
-        <div class="slide active">
-            <section class="summary-container">
-                <button class="prev" onclick="prevSlide()">&#10094;</button>
-                <img src="asset/logo html.svg" alt="HTML Logo" class="summary-logo" />
-                <div class="summary-text">
-                    <h1>HTML <span>Article</span> Summary</h1>
-                    <p>Source by : <a href="https://www.youtube.com/@sandhikagalihWPU" class="link-source">Youtube
-                            channel Web
-                            Programming UNPAS</a></p>
-                    <div class="summary-buttons">
-                        <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's</a>
-                        <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <div class="slides-wrapper" id="slidesWrapper">
+            <div class="slide">
+                <section class="summary-container">
+                    <img src="asset/logo html.svg" alt="HTML Logo" class="summary-logo" />
+                    <div class="summary-text">
+                        <h1>HTML <span>Article</span> Summary</h1>
+                        <p>Source by : <a href="https://www.youtube.com/@sandhikagalihWPU" class="link-source">Youtube
+                                channel Web
+                                Programming UNPAS</a></p>
+                        <div class="summary-buttons">
+                            <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's 1</a>
+                            <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
+                        </div>
                     </div>
-                </div>
 
-                <button class="next" onclick="nextSlide()">&#10095;</button>
-            </section>
-        </div>
-        <div class="slide">
-            <section class="summary-container">
-                <button class="prev" onclick="prevSlide()">&#10094;</button>
-                <img src="asset/logo journal.svg" alt="HTML Logo" class="summary-logo" style="height: 300px; margin-left: 1rem;" />
-                <div class="summary-text">
-                    <h1>PKL <span>Journal</span> Activity</h1>
-                    <p>Pembuatan jurnal selama PKL di Telkom Corporate University</p>
-                    <div class="summary-buttons">
-                        <a href="pages/journal/jurnaldata.php" class="article-btn">Journal</a>
-                        <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
-                    </div>
+                </section>
+            </div>
+            <div class="slide">
+                <div class="hidden-slide">
+                    <section class="summary-container">
+                        <button class="prev" onclick="prevSlide()">&#10094;</button>
+                        <img src="asset/logo html.svg" alt="HTML Logo" class="summary-logo" />
+                        <div class="summary-text">
+                            <h1>HTML <span>Article2</span> Summary</h1>
+                            <p>Source by : <a href="https://www.youtube.com/@sandhikagalihWPU"
+                                    class="link-source">Youtube
+                                    channel Web
+                                    Programming UNPAS</a></p>
+                            <div class="summary-buttons">
+                                <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's 2</a>
+                                <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <button class="next" onclick="nextSlide()">&#10095;</button>
-            </section>
+            </div>
         </div>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
     </div>
 
     <footer>
@@ -94,26 +100,31 @@
         });
 
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+        const slidesWrapper = document.getElementById("slidesWrapper");
+        const totalSlides = document.querySelectorAll(".slide").length;
+        function updateSlidePosition() {
+            slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) slide.classList.add('active');
+            document.querySelectorAll('.slide').forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.remove('hidden-slide');
+                } else {
+                    slide.classList.add('hidden-slide');
+                }
             });
         }
 
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlidePosition();
         }
 
         function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlidePosition();
         }
 
-        // Optional: Auto-slide every 5 seconds
+        // Optional: Auto-slide
         setInterval(nextSlide, 5000);
 
     </script>
