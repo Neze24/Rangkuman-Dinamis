@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
         .slider {
             position: relative;
             width: 100%;
+            max-width: 1100px;
             margin: auto;
             overflow: hidden;
             background: #f0f0f0;
@@ -16,17 +17,30 @@
             padding: 20px;
         }
 
-        .slide {
-            display: none;
-            transition: all 0.5s ease;
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.6s ease;
+            width: 100%;
         }
 
-        .slide.active {
-            display: block;
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide.hidden-slide {
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .slide.active-slide {
+            visibility: visible;
+            pointer-events: auto;
         }
 
         button.prev,
         button.next {
+            position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.5);
@@ -35,6 +49,7 @@
             font-size: 30px;
             padding: 10px;
             cursor: pointer;
+            z-index: 1;
         }
 
         button.prev {
@@ -44,7 +59,6 @@
         button.next {
             right: 10px;
         }
-
 
         /* Summary Section */
         .summary-container {
@@ -57,11 +71,13 @@
             justify-content: center;
             align-items: center;
             gap: 50px;
-            max-width: 1070px;
+            max-width: 1060px;
             color: #fff;
         }
 
         .summary-logo {
+            width: 500px;
+            height: auto;
             width: 500px;
             height: auto;
         }
@@ -70,13 +86,20 @@
             margin: 0;
             font-size: 60px;
             font-weight: bold;
+            margin: 0;
+            font-size: 60px;
+            font-weight: bold;
         }
 
         .summary-text h1 span {
             color: #00ADB5;
+            color: #00ADB5;
         }
 
         .summary-text p {
+            margin: 5px 0 20px 0;
+            font-size: 18px;
+            color: #ccc;
             margin: 5px 0 20px 0;
             font-size: 18px;
             color: #ccc;
@@ -90,9 +113,19 @@
             transition: 0.3s ease;
             margin-right: 10px;
             display: inline-block;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s ease;
+            margin-right: 10px;
+            display: inline-block;
         }
 
         .article-btn {
+            background-color: transparent;
+            border: 2px solid #00ADB5;
+            color: #00ADB5;
             background-color: transparent;
             border: 2px solid #00ADB5;
             color: #00ADB5;
@@ -101,73 +134,83 @@
         .article-btn:hover {
             background-color: #00ADB5;
             color: #fff;
+            background-color: #00ADB5;
+            color: #fff;
         }
     </style>
 </head>
 
 <body>
     <div class="slider">
-        <div class="slide active">
-            <section class="summary-container">
-                <button class="prev" onclick="prevSlide()">&#10094;</button>
-                <img src="asset/logo html.svg" alt="HTML Logo" class="summary-logo" />
-                <div class="summary-text">
-                    <h1>HTML <span>Niggers</span> Summary</h1>
-                    <p>Source by : <a href="https://www.youtube.com/@sandhikagalihWPU" class="link-source">Youtube
-                            channel Web
-                            Programming UNPAS</a></p>
-                    <div class="summary-buttons">
-                        <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's</a>
-                        <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <div class="slides-wrapper" id="slidesWrapper">
+            <div class="slide">
+                <section class="summary-container">
+                    <img src="asset/logo html.svg" alt="HTML Logo" class="summary-logo" />
+                    <div class="summary-text">
+                        <h1>HTML <span>Article</span> Summary</h1>
+                        <p>Source by : <a href="https://www.youtube.com/@sandhikagalihWPU" class="link-source">Youtube
+                                channel Web
+                                Programming UNPAS</a></p>
+                        <div class="summary-buttons">
+                            <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's 1</a>
+                            <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
+                        </div>
                     </div>
-                </div>
 
-                <button class="next" onclick="nextSlide()">&#10095;</button>
-            </section>
-        </div>
-        <div class="slide">
-            <section class="summary-container">
-                <button class="prev" onclick="prevSlide()">&#10094;</button>
-                <img src="asset/logo html.svg" alt="HTML Logo" class="summary-logo" />
-                <div class="summary-text">
-                    <h1>HTML <span>Niggers2</span> Summary</h1>
-                    <p>Source by : <a href="https://www.youtube.com/@sandhikagalihWPU" class="link-source">Youtube
-                            channel Web
-                            Programming UNPAS</a></p>
-                    <div class="summary-buttons">
-                        <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's</a>
-                        <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
-                    </div>
+                </section>
+            </div>
+            <div class="slide">
+                <div class="hidden-slide">
+                    <section class="summary-container">
+                        <button class="prev" onclick="prevSlide()">&#10094;</button>
+                        <img src="asset/logo html.svg" alt="HTML Logo" class="summary-logo" />
+                        <div class="summary-text">
+                            <h1>HTML <span>Article2</span> Summary</h1>
+                            <p>Source by : <a href="https://www.youtube.com/@sandhikagalihWPU"
+                                    class="link-source">Youtube
+                                    channel Web
+                                    Programming UNPAS</a></p>
+                            <div class="summary-buttons">
+                                <a href="pages/page.php?Id=1&No=1" class="article-btn">Article's 2</a>
+                                <a href="https://github.com/gallant4649/Rangkuman" class="article-btn">GitHub</a>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <button class="next" onclick="nextSlide()">&#10095;</button>
-            </section>
+            </div>
         </div>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
     </div>
 
     <script>
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+        const slidesWrapper = document.getElementById("slidesWrapper");
+        const totalSlides = document.querySelectorAll(".slide").length;
+        function updateSlidePosition() {
+            slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) slide.classList.add('active');
+            document.querySelectorAll('.slide').forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.remove('hidden-slide');
+                } else {
+                    slide.classList.add('hidden-slide');
+                }
             });
         }
 
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlidePosition();
         }
 
         function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlidePosition();
         }
 
-        // Optional: Auto-slide every 5 seconds
+        // Optional: Auto-slide
         setInterval(nextSlide, 5000);
-
     </script>
 </body>
 
