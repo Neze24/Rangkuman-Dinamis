@@ -1,3 +1,17 @@
+<?php
+session_start();
+include("../../connection.php");
+
+if (empty($_SESSION['id'])) {
+    header('location: ../../login.php');
+}
+
+$username = $_SESSION['username'];
+$id_login = $_SESSION['id'];
+
+$article = mysqli_query($conn, "SELECT * FROM jurnal WHERE id_login = '$id_login'");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +38,7 @@
             align-items: center;
             padding: 1rem 2rem;
             width: 100%;
-            max-width: 1060px;
+            max-width: 1080px;
             margin: 0 auto;
             gap: 2rem;
             min-width: 650px;
@@ -37,7 +51,7 @@
             padding: 0.5rem 2rem;
             flex-wrap: wrap;
             font-family: Jura, sans-serif;
-            max-width: 640px;
+            max-width: 670px;
             width: 100%;
             box-sizing: border-box;
         }
@@ -226,7 +240,7 @@
                 <a href="../../index.html">LOGOUT</a>
             </nav>
         </div>
-        <p style="margin-left: auto; font-size: 14px;">
+        <p style="margin-left: 230px;">
             <?= $username ?>
         </p>
     </header>

@@ -1,7 +1,13 @@
 <?php
 session_start();
 include("../../connection.php");
+
+if (empty($_SESSION['id'])) {
+    header('location: ../../login.php');
+}
+
 $id_login = $_SESSION['id'];
+$username = $_SESSION['username'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -15,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ('$id_login', '$kegiatan', '$perencanaan', '$foto', '$tanggal', '$hari')";
     $conn->query($sql);
 
-        header("Location: jurnaldata.php");
-        exit();
+    header("Location: jurnaldata.php");
+    exit();
 
 }
 
@@ -135,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 0.5rem 2rem;
             flex-wrap: wrap;
             font-family: Jura, sans-serif;
-            max-width: 640px;
+            max-width: 670px;
             width: 100%;
             box-sizing: border-box;
         }
@@ -201,7 +207,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #e0e0e0;
             font-family: 'Kanit', sans-serif;
         }
-
     </style>
 </head>
 
@@ -219,6 +224,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="../../index.html">LOGOUT</a>
             </nav>
         </div>
+        <p style="margin-left: 230px;"><?= $username ?></p>
     </header>
 
     <!-- Main Form -->
